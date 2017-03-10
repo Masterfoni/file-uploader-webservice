@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Upload de Arquivo - Ustore</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<fieldset>
+		<form id="formulario" method="post" enctype="multipart/form-data">
+		    <input name="file" type="file" />
+		    <button>Enviar</button>
+		</form>
+	</fieldset>
+	
+
+	<script>
+		$("#formulario").submit(function () {
+		    var formData = new FormData(this);
+	
+		    $.ajax({
+		        url: 'http://localhost:8080/Ustore/service/upload/upFile',
+		        type: 'POST',
+		        data: formData,
+		        success: function (data) {
+		            alert(data)
+		        },
+		        cache: false,
+		        contentType: false,
+		        processData: false
+		    });
+		});
+	</script>
+</body>
+</html>

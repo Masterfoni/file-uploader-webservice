@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<fieldset>
+		<label for="arq">Insira um arquivo acui:</label>
+		<input id="arq" type="file"/>
+		<button onclick="uploadArquivo()">Enviar Arquivo</button>
+	</fieldset>
+	
+	<fieldset>
+		<label for="arq">Insira um arquivo acui:</label>
+		<input id="t" type="text"/>
+		<button onclick="uploadMessage()">Enviar Arquivo</button>
+	</fieldset>
+	<script>
+		function uploadArquivo()
+		{			
+			var formData = new FormData();
+			var file = document.getElementById('arq').files[0];
+			formData.append('file', file, file.name );
+			
+			var xml = new XMLHttpRequest();
+			xml.onreadystate = function() {
+				if(xml.readyState === 4 && xml.status == 200) {
+					alert("pegou");
+				}
+			}
+			
+			xml.open("POST", "http://localhost:8080/Ustore/service/upload/mensagem");
+			xml.send(formData);
+		}
+		
+		function uploadMessage() {
+			var formData = new FormData();
+			var file = document.getElementById('t').value;
+			formData.append('texto', file );
+			
+			var xml = new XMLHttpRequest();
+			xml.onreadystate = function() {
+				if(xml.readyState === 4 && xml.status == 200) {
+					alert("pegou");
+				}
+			}
+			
+			xml.open("POST", "http://localhost:8080/Ustore/service/upload/mensagem");
+			xml.send(formData);
+		}
+	</script>
+</body>
+</html>
