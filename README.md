@@ -1,2 +1,2 @@
 # Webservice (Uploading Files)
-Simple webservice for uploading files
+Simple webservice for uploading files, made with Java and Maven.
